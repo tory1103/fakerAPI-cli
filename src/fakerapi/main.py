@@ -58,5 +58,12 @@ class FakerAPI:
                 **kwargs
                 )
 
-if __name__ == "__main__": Fire(FakerAPI)
+def main():
+    """
+    Main program entry-point
+    """
+
+    Fire(FakerAPI().fake)
+
+if __name__ == "__main__": main()
 

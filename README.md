@@ -102,7 +102,3 @@ Changelogs
 
 	*   First release
 
-	Made for developers by Alessandro Pietrantonio - Contact me - [Cookie Policy](https://www.websitepolicies.com/policies/view/ZmgCERal)
-
-	Sorry, you need Javascript on to email me.
-
