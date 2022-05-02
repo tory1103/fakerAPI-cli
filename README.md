@@ -1,4 +1,4 @@
-<center>
+<div align="center">
 
 # What's Faker API?
 
@@ -9,7 +9,8 @@ Faker API it's a collection of **completely free APIs** that helps web developer
 Every resource allows to choose the API language by the "\_locale" parameter and also allows to select the number of rows requested by the "\_quantity" parameter. **Max 1000 rows.**
 
 **Working with API Version: 1.2.0**
-</center>
+
+</div>
 
 ---
 
