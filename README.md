@@ -1,104 +1,108 @@
-What's Faker API?
------------------
-Faker Api - Generate Fake data by API requests       
+<center>
 
-	Faker API it's a collection of **completely free APIs** that helps web developers and web designers generate **fake data** in a fast and easy way. No registration is required. No tokens, no authentication.
+# What's Faker API?
 
-	Every resource allows to choose the API language by the "\_locale" parameter and also allows to select the number of rows requested by the "\_quantity" parameter. **Max 1000 rows**.
+<img src="https://fakerapi.it/assets/img/symbol.png" width="100px">
 
-	Check https://fakerapi.it/en for detailed information
+Faker API it's a collection of **completely free APIs** that helps web developers and web designers generate **fake data** in a fast and easy way. No registration is required. No tokens, no authentication.
 
-	Current version: 1.2.0
+Every resource allows to choose the API language by the "\_locale" parameter and also allows to select the number of rows requested by the "\_quantity" parameter. **Max 1000 rows.**
 
-	No registration is required. No tokens, no keys or other types of authentication. Faker API it's a free service for every developer who want to use it.
+**Working with API Version: 1.2.0**
+</center>
 
-#### Base URL [#](https://fakerapi.it#base-url)
+---
 
-	https://fakerapi.it/api/v1/{resource}
+# 🏁 Getting started
 
-#### Basic Usage [#](https://fakerapi.it#basic-usage)
+## Installation
 
-	Some resources allow to filter data by GET parameters.  
-	The names of these parameters are always preceded by an underscore character "\_", for example:
+### Using python3 setup.py
+```bash
+# Clone repository and change directory to it
+$ git clone https://github.com/tory1103/fakerAPI-cli.git
+$ cd fakerAPI-cli
 
-	https://fakerapi.it/api/v1/images?_width=380
+# Install source code with setup.py
+$ python3 setup.py install
 
-	Data are always wrapped inside a "data" object and are always returned with the total number of rows ("total") and with the Http response "code".
+# FakerAPI is ready to use. Type: fake --help
+$ fake --help
+```
 
-	Every resource accepts 3 common GET parameters:
+### Using docker images and aliases
+```bash
+# Docker must be installed in machine
+# Clone repository and change directory to it
+$ git clone https://github.com/tory1103/fakerAPI-cli.git
+$ cd fakerAPI-cli
 
-	* \_quantity
-	* \_locale
-	* \_seed
+# Create Docker image using Dockerfile
+$ docker build -t fakerAPI:latest .
 
-##### \_locale [#](https://fakerapi.it#params_locale)
+# Using Docker image as entrypoint
+$ docker run -it --rm fakerAPI:latest <args>
 
-	Default: en\_US
+# Create shell alias to use it anywhere
+# If you want it to start with shell session,
+# add alias command to shell config file.
+$ alias fake='docker run -it --rm fakerAPI:latest'
 
-	This parameter means the language of the API response we want to get and accept the locale format "en\_EN". For example:
+# FakerAPI is ready to use. Type: fake --help
+$ fake --help
+```
 
-	https://fakerapi.it/api/v1/persons?_locale=fr_FR
+### Using source code
+```bash
+# Clone repository and change directory to it
+$ git clone https://github.com/tory1103/fakerAPI-cli.git
+$ cd fakerAPI-cli/src/fakerapi/
 
-	This example returns people with french names.
+# Run python3 script
+$ python3 main.py <args>
+```
 
-##### \_quantity [#](https://fakerapi.it#params_quantity)
+---
 
-	Default: 10
+## Documentation
+This is an summary documentation. We recommend looking for official docs
 
-	Min: 1 - Max: 1000
+> For detailed documentation look at [official page](https://fakerapi.it/en)
 
-	This parameter means the number of rows we want to obtain and accept only integers. If you request more than 1000 rows (maximum) the system will return 1000 rows anyway. Example:
+### Basic usage
 
-	https://fakerapi.it/api/v1/companies?_quantity=5
+#### FakerAPI resources list:		
+- Addresses
+- Books
+- Companies
+- Credit Cards
+- Images
+- Persons
+- Places
+- Products
+- Texts
+- Users
+- Custom
 
-	This example returns 5 companies.
+#### Function header
+```python 
+def fake(resource: str, quantity: int = 1, locale: str = "en_US", seed: int = None, **kwargs)
+```
 
-##### \_seed [#](https://fakerapi.it#params_seed)
+#### Some code examples
+```bash
+# Main program syntax
+$ fake <resource> <args_based_on_header>
 
-	Default: null
+# Fetching persons data
+$ fake persons 10
 
-	This parameter accept an integer and allows to get always the same results. So, executing the same request with \_seed parameter set to the same value (ex. 12345) the results will never change. Example:
+# Fetching companies data
+$ fake companies
 
-	https://fakerapi.it/api/v1/companies?_seed=12456
-
-Changelogs
-----------
-
-#### 1.2.0
-
-	Date of release: 08 January 2022
-
-	*   New field "id" added to some resources (Persons, Users, Addresses, Companies, Products, Books)
-
-#### 1.1.1
-
-	Date of release: 30 April 2021
-
-	*   Snake\_case synonyms for some "custom" resources
-	*   General fixes
-
-#### 1.1.0
-
-	Date of release: 13 March 2021
-
-	*   Upgrading core technologies
-
-#### 1.0.2
-
-	Date of release: 23 April 2020
-
-	*   Added "pokemon" type to Custom resource
-	*   Added Pokémon images to Image resource
-
-#### 1.0.1
-
-	Date of release: 14 April 2020
-
-	*   Added "counter" type to Custom resource
-
-#### 1.0.0
-
-	Date of release: 12 April 2020
-
-	*   First release
+# Using extra and custom args
+# Additional API parameters are always preceded by an underscore character "_"
+# So, this is how it should look like:
+$ fake persons 10 --_gender=male
+```
 
